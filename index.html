@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Consolas, "Courier New", monospace;
+}
+
+body{
+background:#0f172a;
+color:white;
+line-height:1.6;
+transition:0.3s;
+}
+
+.container{
+width:90%;
+max-width:1400px;
+margin:auto;
+}
+
+header{
+background:#020617;
+padding:20px 0;
+position:sticky;
+top:0;
+transition:0.3s;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav h1{
+font-size:22px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:14px;
+opacity:0.8;
+}
+
+nav ul li a:hover{
+opacity:1;
+}
+
+.hero{
+padding:80px 0;
+text-align:center;
+}
+
+.hero h2{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero-desc{
+font-family:Consolas, monospace;
+letter-spacing:1px;
+word-spacing:10px;
+margin-top:12px;
+color:#cbd5f5;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+background:#3b82f6;
+color:white;
+text-decoration:none;
+border-radius:6px;
+}
+
+section{
+padding:60px 0;
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:30px;
+text-align:center;
+}
+
+.about{
+max-width:1000px;
+margin:auto;
+text-align:left;
+line-height:1.8;
+opacity:0.85;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:20px;
+}
+
+.skill{
+background:#1e293b;
+padding:20px;
+text-align:center;
+border-radius:8px;
+transition:0.3s;
+}
+
+.project{
+background:#1e293b;
+padding:20px;
+border-radius:8px;
+display:flex;
+flex-direction:column;
+height:100%;
+transition:0.3s;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.project .btn{
+margin-top:auto;
+}
+
+.project h3{
+margin-bottom:10px;
+}
+
+.project p{
+opacity:0.7;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.contact{
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+margin-top:40px;
+font-size:14px;
+opacity:0.6;
+transition:0.3s;
+}
+
+.copy-btn{
+width:32px;
+height:32px;
+border:none;
+border-radius:8px;
+background:#1e293b;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.copy-btn:hover{
+background:#334155;
+}
+
+.copy-field{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+}
+
+.contact a{
+color:#60a5fa;
+text-decoration:none;
+font-weight:500;
+}
+
+.contact a:visited{
+color:#60a5fa;
+}
+
+.contact a:hover{
+color:#93c5fd;
+text-decoration:underline;
+}
+
+.menu-toggle{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+/* NAV LEFT BUTTONS */
+
+.nav-left{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.theme-btn{
+background:#1e293b;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:4px;
+cursor:pointer;
+font-size:14px;
+}
+
+.theme-btn:hover{
+background:#334155;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+nav{
+flex-wrap:wrap;
+}
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+width:100%;
+flex-direction:column;
+display:none;
+text-align:center;
+margin-top:10px;
+}
+
+nav ul li{
+margin:10px 0;
+}
+
+nav ul.active{
+display:flex;
+}
+
+}
+
+/* LIGHT MODE */
+
+.light-mode{
+background:#f8fafc;
+color:#0f172a;
+}
+
+.light-mode header{
+background:#e2e8f0;
+}
+
+.light-mode nav ul li a{
+color:#0f172a;
+opacity:0.8;
+}
+
+.light-mode nav ul li a:hover{
+opacity:1;
+}
+
+.light-mode .hero-desc{
+color:#475569;
+}
+
+.light-mode .about{
+color:#1e293b;
+}
+
+.light-mode .section-title{
+color:#0f172a;
+}
+
+.light-mode .skill,
+.light-mode .project{
+background:#e2e8f0;
+}
+
+.light-mode .project p{
+color:#334155;
+}
+
+.light-mode footer{
+background:#e2e8f0;
+color:#0f172a;
+}
+
+.light-mode .btn{
+background:#2563eb;
+}
+/* language buttons */
+
+.lang-btn{
+background:#1e293b;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:4px;
+cursor:pointer;
+font-size:12px;
+transition:0.2s;
+}
+
+.lang-btn:hover{
+background:#334155;
+}
+
+.lang-btn.active{
+background:#3b82f6;
+color:white;
+}
+.light-mode .lang-btn{
+background:#e2e8f0;
+color:#0f172a;
+}
+
+.light-mode .lang-btn:hover{
+background:#cbd5e1;
+}
+
+.light-mode .lang-btn.active{
+background:#2563eb;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+
+<div class="nav-left">
+
+<button onclick="setLanguage('vi')" class="lang-btn" id="btnVI">VI</button>
+<button onclick="setLanguage('en')" class="lang-btn" id="btnEN">EN</button>
+<button onclick="toggleTheme()" class="theme-btn" id="themeBtn">🌙</button>
+
+</div>
+
+<h1>Portfolio by Cao Duy Manh</h1>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<ul id="navMenu">
+<li><a id="navAbout" href="#about">About</a></li>
+<li><a id="navSkills" href="#skills">Skills</a></li>
+<li><a id="navProjects" href="#projects">Projects</a></li>
+<li><a id="navContact" href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+
+<h2 id="heroTitle">Hello, I'm Cao Duy Manh</h2>
+
+<p class="hero-desc">
+
+Backend_Developer(.NET_Python) 
+AI/Machine_Learning 
+Database_Systems 
+Full_Stack_Applications
+
+</p>
+
+<a id="heroBtn" class="btn" href="#projects">View My Work</a>
+
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+
+<h2 id="aboutTitle" class="section-title">About Me</h2>
+
+<p id="aboutText1" class="about">
+I am an IT student with a strong interest in backend development and artificial intelligence. 
+My main focus is building reliable backend systems and APIs using technologies such as .NET (C#) and Python,
+along with designing and working with database systems.
+</p>
+<br>
+<p id="aboutText2" class="about">
+I enjoy developing real-world applications that combine backend services, databases,
+and intelligent features such as machine learning and computer vision.
+Through personal projects, I have experience working across different parts of the stack,
+from building APIs and handling data processing to creating simple frontend interfaces.
+</p>
+<br>
+<p id="aboutText3" class="about">
+Currently, I am continuously improving my skills in backend architecture,
+AI-powered applications, and full-stack development while building practical software projects.
+</p>
+
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+
+<h2 id="skillsTitle" class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill">
+<h3 id="skillBackend">Backend</h3>
+<p id="skillBackendDesc">C# (.NET), Python (FastAPI), REST API, Java (TCP/IP basics)</p>
+</div>
+
+<div class="skill">
+<h3 id="skillAI">AI / Machine Learning</h3>
+<p id="skillAIDesc">Python, Machine Learning, Computer Vision, NLP</p>
+</div>
+
+<div class="skill">
+<h3 id="skillMobile">Mobile / Web</h3>
+<p id="skillMobileDesc">HTML, CSS, Dart (Flutter), Kotlin, Java + XML</p>
+</div>
+
+<div class="skill">
+<h3 id="skillDevops">Database & DevOps</h3>
+<p id="skillDevopsDesc">SQL, Docker, Linux, JSON</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+
+<h2 id="projectsTitle" class="section-title">Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+<h3 id="project1Title">Medicine Recognition AI</h3>
+<p id="project1Desc">
+AI-powered application that integrates Computer Vision and Natural Language Processing to recognize medicines from 
+images and provide relevant drug information. The system uses deep learning models to classify medicine packaging and 
+links the results with a structured database of drug knowledge. Users can also interact with the system through a 
+simple NLP-based interface to ask questions about usage, dosage, and basic medication guidance.
+</p>
+<a id="projectBtn1" class="btn" href="https://github.com/Manhkientruc/medicine_bot_app">View Project</a>
+</div>
+
+<div class="project">
+<h3 id="project2Title">Call Analyzer Internship 6 months</h3>
+<p id="project2Desc">
+Backend system implemented with <strong>.NET and Clean Architecture</strong> for call data analysis 
+and chatbot integration. During a 6-month internship, I worked with the <strong>Clean Architecture</strong> 
+pattern to build scalable backend services and support the migration of several existing systems 
+from Python to .NET.
+
+<p id="project2Desc2">I contributed to multiple internal services including <strong>Call Service</strong>, 
+<strong>Golf Service</strong>, and <strong>TPBank Token</strong> payment integration. 
+The work involved designing layered application structures, implementing domain logic, 
+developing RESTful APIs, and ensuring clear separation between domain, application, 
+infrastructure, and presentation layers.</p>
+</p>
+<a id="projectBtn2" class="btn" href="https://github.com/Manhkientruc/Clean_Arc---Call_Analyzer">View Project</a>
+</div>
+
+<div class="project">
+<h3 id="project3Title">Bank App</h3>
+<p id="project3Desc">
+A banking application developed with a FastAPI (Python) backend and mobile user interfaces built using 
+Dart and Kotlin. The backend service provides RESTful APIs to handle core banking features such as 
+account management, transaction processing, and communication between client applications and the server.
+
+<p id="project3Desc2">The project focuses on client–server architecture, API design, and integration between mobile applications 
+and backend services. Through this system, I explored building scalable backend endpoints, handling financial 
+operations through APIs, and connecting mobile applications to backend infrastructure.</p>
+</p>
+<a id="projectBtn3" class="btn" href="https://github.com/Manhkientruc/dartbank_app">View Project</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="contact">
+
+<p class="copy-field">
+Email: 
+<span id="emailText">caomanh1809@email.com</span>
+
+<button class="copy-btn" onclick="copyEmail()">
+<svg id="copyIcon"
+xmlns="http://www.w3.org/2000/svg" 
+width="18" height="18" 
+fill="none" 
+stroke="currentColor" 
+stroke-width="2" 
+viewBox="0 0 24 24">
+
+<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+
+</svg>
+</button>
+</p>
+
+<p>
+GitHub: 
+<a href="https://github.com/Manhkientruc" target="_blank">Manhkientruc</a>
+</p>
+
+<p>Phone: 0366714763</p>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Cao Duy Manh. All rights reserved.</p>
+</footer>
+<script>
+function copyEmail(){
+
+const email = document.getElementById("emailText").innerText;
+const icon = document.getElementById("copyIcon");
+
+navigator.clipboard.writeText(email);
+
+icon.innerHTML = '<path d="M20 6L9 17l-5-5"></path>';
+
+setTimeout(()=>{
+icon.innerHTML = `
+<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+`;
+},2000);
+function toggleMenu(){
+const menu = document.getElementById("navMenu");
+menu.classList.toggle("active");
+}
+}
+function toggleTheme(){
+
+const body = document.body;
+const btn = document.getElementById("themeBtn");
+
+body.classList.toggle("light-mode");
+
+if(body.classList.contains("light-mode")){
+btn.innerHTML="☀";
+}else{
+btn.innerHTML="🌙";
+}
+
+}
+const translations = {
+
+en: {
+navAbout: "About",
+navSkills: "Skills",
+navProjects: "Projects",
+navContact: "Contact",
+
+heroTitle: "Hello, I'm Cao Duy Manh",
+heroBtn: "View My Work",
+
+aboutTitle: "About Me",
+skillsTitle: "Skills",
+projectsTitle: "Projects",
+contactTitle: "Contact",
+
+heroTitle: "Hello, I'm Cao Duy Manh",
+
+heroDesc: "Backend_Developer(.NET_Python)  AI/Machine_Learning  Database_Systems  Full-Stack_Applications",
+
+heroBtn: "View My Work",
+
+aboutTitle: "About Me",
+
+aboutText1: "I am an IT student with a strong interest in backend development and artificial intelligence. My main focus is building reliable backend systems and APIs using technologies such as .NET (C#) and Python, along with designing and working with database systems.",
+
+aboutText2: "I enjoy developing real-world applications that combine backend services, databases, and intelligent features such as machine learning and computer vision. Through personal projects, I have experience working across different parts of the stack, from building APIs and handling data processing to creating simple frontend interfaces.",
+
+aboutText3: "Currently, I am continuously improving my skills in backend architecture, AI-powered applications, and full-stack development while building practical software projects.",
+
+skillsTitle: "Skills",
+
+skillBackend: "Backend",
+skillBackendDesc: "C# (.NET), Python (FastAPI), REST API, Java (TCP/IP basics)",
+
+skillAI: "AI / Machine Learning",
+skillAIDesc: "Python, Machine Learning, Computer Vision, NLP",
+
+skillMobile: "Mobile / Web",
+skillMobileDesc: "HTML, CSS, Dart (Flutter), Kotlin, Java + XML",
+
+skillDevops: "Database & DevOps",
+skillDevopsDesc: "SQL, Docker, Linux, JSON",
+
+projectsTitle: "Projects",
+
+project1Title: "Medicine Recognition AI",
+project2Title: "Call Analyzer Internship 6 months",
+project3Title: "Bank App",
+
+viewProjectBtn1: "View Project",
+viewProjectBtn2: "View Project",
+viewProjectBtn3: "View Project",
+
+project1Title: "Medicine Recognition AI",
+
+project1Desc: "AI-powered application that integrates Computer Vision and Natural Language Processing to recognize medicines from images and provide relevant drug information. The system uses deep learning models to classify medicine packaging and links the results with a structured database of drug knowledge. Users can also interact with the system through a simple NLP-based interface to ask questions about usage, dosage, and basic medication guidance.",
+
+projectBtn1: "View Project",
+
+project2Title: "Call Analyzer Internship 6 months",
+
+project2Desc: "Backend system implemented with .NET and Clean Architecture for call data analysis and chatbot integration. During a 6-month internship, I worked with the Clean Architecture pattern to build scalable backend services and support the migration of several existing systems from Python to .NET.",
+
+project2Desc2: "I contributed to multiple internal services including Call Service, Golf Service, and TPBank Token payment integration. The work involved designing layered application structures, implementing domain logic, developing RESTful APIs, and ensuring clear separation between domain, application, infrastructure, and presentation layers.",
+
+projectBtn2: "View Project",
+
+project3Title: "Bank App",
+
+project3Desc: "A banking application developed with a FastAPI (Python) backend and mobile user interfaces built using Dart and Kotlin. The backend service provides RESTful APIs to handle core banking features such as account management, transaction processing, and communication between client applications and the server.",
+
+project3Desc2: "The project focuses on client–server architecture, API design, and integration between mobile applications and backend services. Through this system, I explored building scalable backend endpoints, handling financial operations through APIs, and connecting mobile applications to backend infrastructure.",
+
+projectBtn3: "View Project",
+
+},
+
+vi: {
+navAbout: "Giới thiệu",
+navSkills: "Kỹ năng",
+navProjects: "Dự án",
+navContact: "Liên hệ",
+
+heroTitle: "Xin chào, tôi là Cao Duy Mạnh",
+heroBtn: "Xem dự án",
+
+aboutTitle: "Giới thiệu",
+skillsTitle: "Kỹ năng",
+projectsTitle: "Dự án",
+contactTitle: "Liên hệ",
+
+heroTitle: "Xin chào, tôi là Cao Duy Mạnh",
+
+heroDesc: "Backend_Developer(.NET_Python)  AI/Machine_Learning  Database_Systems  Full-Stack_Applications",
+
+heroBtn: "Xem dự án",
+
+aboutTitle: "Giới thiệu",
+
+aboutText1: "Tôi là sinh viên Công nghệ thông tin với sự quan tâm lớn đến phát triển backend và trí tuệ nhân tạo. Trọng tâm của tôi là xây dựng các hệ thống backend và API ổn định bằng các công nghệ như .NET (C#) và Python, cùng với việc thiết kế và làm việc với các hệ thống cơ sở dữ liệu.",
+
+aboutText2: "Tôi thích phát triển các ứng dụng thực tế kết hợp giữa backend services, cơ sở dữ liệu và các tính năng thông minh như machine learning và computer vision. Thông qua các dự án cá nhân, tôi đã có kinh nghiệm làm việc với nhiều phần khác nhau của hệ thống, từ xây dựng API, xử lý dữ liệu đến tạo các giao diện frontend đơn giản.",
+
+aboutText3: "Hiện tại tôi đang tiếp tục cải thiện kỹ năng về kiến trúc backend, các ứng dụng AI và phát triển full-stack thông qua việc xây dựng các dự án phần mềm thực tế.",
+
+skillsTitle: "Kỹ năng",
+
+skillBackend: "Backend",
+skillBackendDesc: "C# (.NET), Python (FastAPI), REST API, Java (TCP/IP cơ bản)",
+
+skillAI: "AI / Machine Learning",
+skillAIDesc: "Python, Machine Learning, Computer Vision, NLP",
+
+skillMobile: "Mobile / Web",
+skillMobileDesc: "HTML, CSS, Dart (Flutter), Kotlin, Java + XML",
+
+skillDevops: "Cơ sở dữ liệu & DevOps",
+skillDevopsDesc: "SQL, Docker, Linux, JSON",
+
+projectsTitle: "Dự án",
+
+project1Title: "AI nhận diện thuốc",
+project2Title: "Call Analyzer (Thực tập 6 tháng)",
+project3Title: "Ứng dụng ngân hàng",
+
+viewProjectBtn1: "Xem dự án",
+viewProjectBtn2: "Xem dự án",
+viewProjectBtn3: "Xem dự án",
+
+project1Title: "AI nhận diện thuốc",
+
+project1Desc: "Ứng dụng AI kết hợp Computer Vision và Natural Language Processing để nhận diện thuốc từ hình ảnh và cung cấp thông tin liên quan. Hệ thống sử dụng các mô hình deep learning để phân loại bao bì thuốc và liên kết kết quả với cơ sở dữ liệu kiến thức về thuốc. Người dùng cũng có thể tương tác với hệ thống thông qua giao diện NLP đơn giản để hỏi về cách sử dụng, liều lượng và hướng dẫn cơ bản về thuốc.",
+
+projectBtn1: "Xem dự án",
+
+project2Title: "Call Analyzer (Thực tập 6 tháng)",
+
+project2Desc: "Hệ thống backend được xây dựng bằng .NET và Clean Architecture để phân tích dữ liệu cuộc gọi và tích hợp chatbot. Trong quá trình thực tập 6 tháng, tôi đã làm việc với mô hình Clean Architecture để xây dựng các backend service có khả năng mở rộng và hỗ trợ chuyển đổi các hệ thống hiện có từ Python sang .NET.",
+
+project2Desc2: "Tôi đã tham gia phát triển nhiều dịch vụ nội bộ như Call Service, Golf Service và tích hợp thanh toán TPBank Token. Công việc bao gồm thiết kế kiến trúc phân tầng, xây dựng domain logic, phát triển RESTful APIs và đảm bảo sự tách biệt rõ ràng giữa các layer: domain, application, infrastructure và presentation.",
+
+projectBtn2: "Xem dự án",
+
+project3Title: "Ứng dụng ngân hàng",
+
+project3Desc: "Ứng dụng ngân hàng được phát triển với backend FastAPI (Python) và giao diện mobile sử dụng Dart và Kotlin. Backend cung cấp các RESTful API để xử lý các chức năng tài chính như quản lý tài khoản, xử lý giao dịch và giao tiếp giữa ứng dụng và server.",
+
+project3Desc2: "Dự án tập trung vào kiến trúc client–server, thiết kế API và tích hợp giữa ứng dụng mobile và backend service. Thông qua hệ thống này, tôi đã xây dựng các endpoint backend có khả năng mở rộng, xử lý các nghiệp vụ tài chính thông qua API và kết nối ứng dụng mobile với hạ tầng backend.",
+
+projectBtn3: "Xem dự án"
+}
+
+}
+function setLanguage(lang){
+
+localStorage.setItem("lang", lang);
+
+const data = translations[lang];
+
+for (let key in data){
+const el = document.getElementById(key);
+if(el){
+el.innerText = data[key];
+}
+}
+
+document.getElementById("btnVI").classList.remove("active");
+document.getElementById("btnEN").classList.remove("active");
+
+if(lang==="vi"){
+document.getElementById("btnVI").classList.add("active");
+}else{
+document.getElementById("btnEN").classList.add("active");
+}
+
+}
+</script>
+</body>
+</html>
