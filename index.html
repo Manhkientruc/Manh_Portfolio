@@ -341,6 +341,34 @@
                 background:#2563eb;
                 color:white;
             }
+            .gallery{
+                display:grid;
+                grid-template-columns:repeat(3, 1fr);
+                gap:30px;
+                max-width:900px;
+                margin:auto;
+            }
+
+            .gallery-item{
+                break-inside:avoid;
+                margin-bottom:20px;
+                border-radius:10px;
+                overflow:hidden;
+            }
+
+            .gallery-item img{
+                width:100%;
+                max-width:220px;
+                height:auto;
+                display:block;
+                margin:auto;
+                border-radius:16px;
+                box-shadow:0 10px 25px rgba(0,0,0,0.4);
+            }
+
+            .gallery-item img:hover{
+                transform:scale(1.03);
+            }
         </style>
     </head>
     <body>
@@ -457,6 +485,31 @@
                                 operations through APIs, and connecting mobile applications to backend infrastructure.</p>
                             </p>
                             <a id="projectBtn3" class="btn" href="https://github.com/Manhkientruc/dartbank_app">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="project-gallery">
+            <div class="container">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="images/Screenshot_20260314-092446.jpg">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Screenshot_20260314-092455.jpg">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Screenshot_20260314-092459.jpg">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Android Compact - 1.png">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Android Compact - 4.png">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/Android Compact - 42.png">
                     </div>
                 </div>
             </div>
